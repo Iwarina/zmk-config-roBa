@@ -1,0 +1,6 @@
+# ZMK build artifacts
+*.uf2
+*.bin
+
+# Build log directory
+build_log/

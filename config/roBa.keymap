@@ -1,9 +1,7 @@
-#include "custom_pointing.h"
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/input-listeners.h>
 
 &mt {
     flavor = "balanced";
