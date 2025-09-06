@@ -1,0 +1,6 @@
+config ZMK_POINTING_CUSTOM_SCROLL_CALCULATION
+    bool "Enable custom pointing scroll calculation"
+    default n
+    help
+      Enable custom scroll calculation for pointing devices.
+      This allows for custom acceleration curves.
