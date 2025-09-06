@@ -21,7 +21,10 @@ include:
  - board: seeeduino_xiao_ble
    shield: roBa_R
    snippet: studio-rpc-usb-uart
+   cache_buster: 20250906140000
  - board: seeeduino_xiao_ble
    shield: roBa_L
+   cache_buster: 20250906140000
  - board: seeeduino_xiao_ble
    shield: settings_reset
+   cache_buster: 20250906140000
