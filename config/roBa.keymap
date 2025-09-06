@@ -141,7 +141,7 @@
 &kp Q      &kp W         &kp E         &kp R                   &kp T                                                       &kp Y        &kp U  &kp I      &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F                   &kp G        &kp LS(LG(S))               &lt 7 X            &kp H        &kp J  &kp K      &kp L    &kp SEMICOLON
 &kp Z      &kp X         &kp C         &kp V                   &kp B        &kp LEFT_BRACKET            &kp RIGHT_BRACKET  &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL  &kp LEFT_ALT  &kp LEFT_WIN  &lt_to_layer_0 1 LANG1  &lt 5 SPACE  &lt_to_layer_0 3 LANG2      &kp BACKSPACE      &lt 2 ENTER                             &kp DEL
+&kp LCTRL  &kp LEFT_ALT  &kp LEFT_WIN  &lt_to_layer_0 1 LANG1  &lt 6 SPACE  &lt_to_layer_0 3 LANG2      &kp BACKSPACE      &lt 2 ENTER                             &kp DEL
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -149,13 +149,13 @@
 
         CONTROL {
             bindings = <
-&kp LC(Q)  &kp LC(W)     &kp LC(E)     &kp LC(R)  &kp LC(T)                                        &kp LC(Y)    &kp LC(U)  &kp LC(I)  &kp LC(O)    &kp LC(P)
-&kp LC(A)  &kp LC(S)     &kp LC(D)     &kp LC(F)  &kp LC(G)  &kp LS(LG(S))         &trans             &kp LC(H)    &kp LC(J)  &kp LC(K)  &kp LC(L)    &kp LC(SEMICOLON)
-&kp LC(Z)  &kp LC(X)     &kp LC(C)     &kp LC(V)  &kp LC(B)  &kp LC(LEFT_BRACKET)  &kp LC(RIGHT_BRACKET)  &kp LC(N)    &kp LC(M)  &kp LC(COMMA)  &kp LC(DOT)  &kp LC(SLASH)
-&kp LCTRL  &kp LEFT_ALT  &kp LEFT_WIN  &trans     &trans  &trans                &kp LC(BACKSPACE)  &lt 2 ENTER                             &kp LC(DEL)
+&kp LC(Q)  &kp LC(W)     &kp LC(E)     &kp LC(R)  &kp LC(T)                                                   &kp LC(Y)    &kp LC(U)  &kp LC(I)      &kp LC(O)    &kp LC(P)
+&kp LC(A)  &kp LC(S)     &kp LC(D)     &kp LC(F)  &kp LC(G)  &kp INT_MUHENKAN          &kp INT_HENKAN         &kp LC(H)    &kp LC(J)  &kp LC(K)      &kp LC(L)    &kp LC(SEMICOLON)
+&kp LC(Z)  &kp LC(X)     &kp LC(C)     &kp LC(V)  &kp LC(B)  &kp LC(LEFT_BRACKET)      &kp LC(RIGHT_BRACKET)  &kp LC(N)    &kp LC(M)  &kp LC(COMMA)  &kp LC(DOT)  &kp LC(SLASH)
+&kp LCTRL  &kp LEFT_ALT  &kp LEFT_WIN  &trans     &trans     &trans                    &kp BACKSPACE          &lt 2 ENTER                                         &kp LC(DEL)
             >;
 
-            sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
+            sensor-bindings = <&inc_dec_kp LC(K) LC(L)>;
         };
 
         NUM-ARROW {
@@ -169,28 +169,19 @@
 
         FUNCTION {
             bindings = <
-&kp MINUS          &kp LS(N7)    &kp LS(N8)    &kp LS(N9)    &kp PLUS                       &kp F1  &kp F2  &kp F3  &kp F4  &kp F5
-&kp SLASH          &kp LS(N4)    &kp LS(N5)    &kp LS(N6)    &kp ASTERISK  &trans      &kp F13  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
-&kp LS(N0)         &kp LS(N1)    &kp LS(N2)    &kp LS(N3)    &kp PERIOD    &trans      &trans   &trans  &trans  &trans  &trans  &kp F11
-&trans             &kp LS(N0)    &trans        &trans        &trans        &trans      &trans   &trans                          &kp F12
+&kp MINUS   &kp LS(N7)  &kp LS(N8)  &kp LS(N9)  &kp PLUS                          &kp F7  &kp F8  &kp F9  &kp F12  &kp F16
+&kp SLASH   &kp LS(N4)  &kp LS(N5)  &kp LS(N6)  &kp ASTERISK  &trans      &trans  &kp F4  &kp F5  &kp F6  &kp F11  &kp F15
+&kp LS(N0)  &kp LS(N1)  &kp LS(N2)  &kp LS(N3)  &kp PERIOD    &trans      &trans  &kp F1  &kp F2  &kp F3  &kp F10  &kp F14
+&trans      &kp LS(N0)  &trans      &trans      &trans        &trans      &trans  &trans                           &kp F13
             >;
         };
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
-            >;
-        };
-
-        SHIFT {
-            bindings = <
-&kp LS(Q)  &kp LS(W)  &kp LS(E)     &kp LS(R)   &kp LS(T)                   &kp LS(Y)   &kp LS(U)  &kp LS(I)  &kp LS(O)    &kp LS(P)
-&kp LS(A)  &kp LS(S)  &kp LS(D)     &kp LS(F)   &kp LS(G)   &trans      &trans  &kp LS(H)   &kp LS(J)  &kp LS(K)  &kp LS(L)    &kp LS(SEMI)
-&kp LS(Z)  &kp LS(X)  &kp LS(C)     &kp LS(V)   &kp LS(B)   &trans      &trans  &kp LS(N)   &kp LS(M)  &kp LS(COMMA)  &kp LS(DOT)  &kp LS(FSLH)
-&kp LCTRL  &kp LALT   &kp LGUI      &trans      &trans      &trans      &trans  &trans                             &trans
+&trans  &trans  &trans  &trans  &trans                         &trans       &trans    &mo 5      &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &kp LC(V)  &kp LS(TAB)  &mkp MB1  &mkp MB3   &mkp MB2  &kp LC(TAB)
+&trans  &trans  &trans  &trans  &trans  &trans      &kp LC(C)  &trans       &mkp MB4  &kp LC(W)  &mkp MB5  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans     &trans                                      &trans
             >;
         };
 
@@ -203,7 +194,16 @@
             >;
         };
 
-        layer_6 {
+        SHIFT {
+            bindings = <
+&kp LS(Q)  &kp LS(W)  &kp LS(E)  &kp LS(R)  &kp LS(T)                      &kp LS(Y)  &kp LS(U)  &kp LS(I)      &kp LS(O)    &kp LS(P)
+&kp LS(A)  &kp LS(S)  &kp LS(D)  &kp LS(F)  &kp LS(G)  &trans      &trans  &kp LS(H)  &kp LS(J)  &kp LS(K)      &kp LS(L)    &kp LS(SEMI)
+&kp LS(Z)  &kp LS(X)  &kp LS(C)  &kp LS(V)  &kp LS(B)  &trans      &trans  &kp LS(N)  &kp LS(M)  &kp LS(COMMA)  &kp LS(DOT)  &kp LS(FSLH)
+&kp LCTRL  &kp LALT   &kp LGUI   &trans     &trans     &trans      &trans  &trans                                            &trans
+            >;
+        };
+
+        BT {
             bindings = <
 &trans  &trans        &trans        &trans        &trans                           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
 &trans  &kp LC(S)     &trans        &trans        &trans  &trans      &trans       &trans        &trans        &trans        &trans        &trans
