@@ -13,9 +13,7 @@
     quick-tap-ms = <0>;
 };
 
-
 &sl { release-after-ms = <250>; };
-
 
 &trackball {
     automouse-layer = <4>;
@@ -92,6 +90,21 @@
             bindings = <&kp LS(MINUS)>;
             key-positions = <30 31>;
         };
+
+        Plus {
+            bindings = <&kp LS(EQUAL)>;
+            key-positions = <8 9 7 38>;
+        };
+
+        Pipe {
+            bindings = <&kp LS(BACKSLASH)>;
+            key-positions = <8 9 38>;
+        };
+
+        DoubleQuote {
+            bindings = <&kp LS(SQT)>;
+            key-positions = <20 21 38>;
+        };
     };
 
     macros {
@@ -123,13 +136,9 @@
             bindings = <&kp LANG_HANJA &kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT_ARROW>;
             label = "parenthesis";
         };
-
-
-
     };
 
     behaviors {
-
         scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -165,7 +174,7 @@
         default_layer {
             bindings = <
 &kp Q      &kp W         &kp E         &kp R                   &kp T                                                       &kp Y        &kp U  &kp I      &kp O    &kp P
-&kp A      &kp S         &kp D         &kp F                   &kp G        &kp LS(LG(S))               &lt 7 X            &kp H        &kp J  &kp K      &kp L    &kp SEMICOLON
+&kp A      &kp S         &kp D         &kp F                   &kp G        &bootloader                 &lt 7 X            &kp H        &kp J  &kp K      &kp L    &kp SEMICOLON
 &kp Z      &kp X         &kp C         &kp V                   &kp B        &kp LEFT_BRACKET            &kp RIGHT_BRACKET  &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
 &kp LCTRL  &kp LEFT_ALT  &kp LEFT_WIN  &lt_to_layer_0 1 LANG1  &lt 6 SPACE  &lt_to_layer_0 3 LANG2      &kp BACKSPACE      &lt 2 ENTER                             &kp DEL
             >;
