@@ -3,6 +3,9 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
+// #includeのあとのあたりにスクロール量を変更
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 100
+
 &mt {
     flavor = "balanced";
     quick-tap-ms = <0>;
@@ -119,6 +122,19 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        // 電電猫猫氏作 ZMKでロータリーエンコーダをマウススクロールを割り当てる
+        // 新しいスクロール動作の追加
+        scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+            // 追加: スクロールのタップ時間を設定 (20ms)
+            tap-ms = <20>;
+        };
+
+// 設定したいレイヤー
+sensor-bindings = <&scroll_up_down>;
     };
 
     keymap {
