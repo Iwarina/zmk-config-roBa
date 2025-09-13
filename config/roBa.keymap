@@ -4,6 +4,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 // #includeのあとのあたりにスクロール量を変更
+
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
 &mt {
@@ -27,9 +28,7 @@
     // };
 };
 
-&mkp_input_listener {
-    input-processors = <&zip_temp_layer 4 250>;
-};
+&mkp_input_listener { input-processors = <&zip_temp_layer 4 250>; };
 
 / {
     combos {
@@ -106,7 +105,6 @@
         };
     };
 
-
     macros {
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro-one-param";
@@ -128,16 +126,20 @@
 
         // 電電猫猫氏作 ZMKでロータリーエンコーダをマウススクロールを割り当てる
         // 新しいスクロール動作の追加
+
         scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
             // 追加: スクロールのタップ時間を設定 (20ms)
+
             tap-ms = <20>;
         };
 
-// 設定したいレイヤー
-sensor-bindings = <&scroll_up_down>;
+        // 設定したいレイヤー
+
+        sensor-bindings = <&scroll_up_down>;
     };
 
     keymap {
@@ -151,7 +153,7 @@ sensor-bindings = <&scroll_up_down>;
 &kp LCTRL  &kp LEFT_ALT  &kp LEFT_WIN  &lt_to_layer_0 1 LANG1  &lt 6 SPACE  &lt_to_layer_0 3 LANG2      &kp BACKSPACE      &lt 2 ENTER                             &kp DEL
             >;
 
-            sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
+            sensor-bindings = <&scroll_up_down>;
         };
 
         CONTROL {
@@ -203,10 +205,10 @@ sensor-bindings = <&scroll_up_down>;
 
         SHIFT {
             bindings = <
-&kp LS(Q)  &kp LS(W)  &kp LS(E)  &kp LS(R)  &kp LS(T)                      &kp LS(Y)  &kp LS(U)  &kp LS(I)      &kp LS(O)    &kp LS(P)
-&kp LS(A)  &kp LS(S)  &kp LS(D)  &kp LS(F)  &kp LS(G)  &trans      &trans  &kp LS(H)  &kp LS(J)  &kp LS(K)      &kp LS(L)    &kp LS(SEMI)
-&kp LS(Z)  &kp LS(X)  &kp LS(C)  &kp LS(V)  &kp LS(B)  &trans      &trans  &kp LS(N)  &kp LS(M)  &kp LS(COMMA)  &kp LS(DOT)  &kp LS(FSLH)
-&kp LCTRL  &kp LALT   &kp LGUI   &trans     &trans     &trans      &trans  &trans                                            &trans
+&kp LS(Q)      &kp LS(W)     &kp LS(E)     &kp LS(R)  &kp LS(T)                                                   &kp LS(Y)        &kp LS(U)  &kp LS(I)      &kp LS(O)    &kp LS(P)
+&kp LS(A)      &kp LS(S)     &kp LS(D)     &kp LS(F)  &kp LS(G)  &trans                    &trans                 &kp LS(H)        &kp LS(J)  &kp LS(K)      &kp LS(L)    &kp LS(SEMI)
+&kp LS(Z)      &kp LS(X)     &kp LS(C)     &kp LS(V)  &kp LS(B)  &kp LS(LEFT_BRACKET)      &kp LS(RIGHT_BRACKET)  &kp LS(N)        &kp LS(M)  &kp LS(COMMA)  &kp LS(DOT)  &kp LS(FSLH)
+&kp LS(LCTRL)  &kp LS(LALT)  &kp LS(LGUI)  &trans     &trans     &trans                    &trans                 &lt 2 LS(ENTER)                                         &kp LS(DELETE)
             >;
         };
 
