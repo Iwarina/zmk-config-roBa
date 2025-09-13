@@ -3,17 +3,13 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
+// #includeのあとのあたりにスクロール量を変更
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
-#define MOUSE 4
-#define SCROLL 5
-#define NUM 2
 
 &mt {
     flavor = "balanced";
     quick-tap-ms = <0>;
 };
-
-&sl { release-after-ms = <250>; };
 
 &trackball {
     automouse-layer = <4>;
@@ -107,6 +103,7 @@
         };
     };
 
+
     macros {
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro-one-param";
@@ -114,50 +111,9 @@
             bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "TO_LAYER_0";
         };
-
-        mkp_exit_AML: mkp_exit_AML {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings =
-                <&macro_press>,
-                <&macro_param_1to1 &mkp MACRO_PLACEHOLDER>,
-                <&macro_pause_for_release>,
-                <&macro_release>,
-                <&macro_param_1to1 &mkp MACRO_PLACEHOLDER>,
-                <&macro_tap>,
-                <&sl 4>;
-
-            label = "MKP_EXIT_AML";
-        };
-
-        parenthesis: parenthesis {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LANG_HANJA &kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT_ARROW>;
-            label = "parenthesis";
-        };
     };
 
     behaviors {
-        scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
-            compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-
-            // 追加: スクロールのタップ時間を設定 (20ms)
-
-            tap-ms = <20>;
-        };
-
-        multi_tap_tab_bspc: behavior_multi_tap {
-            label = "MT_TAB_BSPC";
-            #binding-cells = <0>;
-            bindings = <&kp TAB>, <&kp BSPC>;
-
-            max-taps = <2>;
-            max-tap-interrupt-ms = <250>;
-        };
-
         lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
@@ -166,6 +122,19 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        // 電電猫猫氏作 ZMKでロータリーエンコーダをマウススクロールを割り当てる
+        // 新しいスクロール動作の追加
+        scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+            // 追加: スクロールのタップ時間を設定 (20ms)
+            tap-ms = <20>;
+        };
+
+// 設定したいレイヤー
+sensor-bindings = <&scroll_up_down>;
     };
 
     keymap {
