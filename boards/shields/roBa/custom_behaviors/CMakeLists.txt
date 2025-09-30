@@ -1,0 +1,1 @@
+zephyr_sources(behavior_pmw3610_config.c)

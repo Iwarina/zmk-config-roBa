@@ -34,6 +34,32 @@
         input-processors = <&zip_temp_layer 4 10000>;
 
     };
+
+    behaviors {
+        pmw_set_thresh_low: pmw_set_thresh_low {
+            compatible = "zmk,behavior-pmw3610-attr-set";
+            label = "PMW_THRESH_LOW";
+            #binding-cells = <0>;
+            attr = <1>; /* PMW3610_ATTR_RUN_DOWNSHIFT_TIME */
+            value = <32>;
+        };
+
+        pmw_set_thresh_mid: pmw_set_thresh_mid {
+            compatible = "zmk,behavior-pmw3610-attr-set";
+            label = "PMW_THRESH_MID";
+            #binding-cells = <0>;
+            attr = <1>; /* PMW3610_ATTR_RUN_DOWNSHIFT_TIME */
+            value = <200>;
+        };
+
+        pmw_set_thresh_high: pmw_set_thresh_high {
+            compatible = "zmk,behavior-pmw3610-attr-set";
+            label = "PMW_THRESH_HIGH";
+            #binding-cells = <0>;
+            attr = <1>; /* PMW3610_ATTR_RUN_DOWNSHIFT_TIME */
+            value = <500>;
+        };
+    };
 };
 
 
