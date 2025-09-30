@@ -15,3 +15,19 @@
 &left_encoder {
     status = "okay";
 };
+
+/ {
+    behaviors {
+        pmw_set_thresh_low: pmw_set_thresh_low {
+            compatible = "zmk,behavior-noop";
+        };
+
+        pmw_set_thresh_mid: pmw_set_thresh_mid {
+            compatible = "zmk,behavior-noop";
+        };
+
+        pmw_set_thresh_high: pmw_set_thresh_high {
+            compatible = "zmk,behavior-noop";
+        };
+    };
+};

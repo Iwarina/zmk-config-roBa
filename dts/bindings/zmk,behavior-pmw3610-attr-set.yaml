@@ -1,0 +1,19 @@
+description: "Behavior to set a PMW3610 sensor attribute"
+compatible: "zmk,behavior-pmw3610-attr-set"
+
+properties:
+  label:
+    type: string
+    required: true
+  "#binding-cells":
+    type: int
+    required: true
+    const: 0
+  attr:
+    type: int
+    required: true
+    description: The sensor attribute to set.
+  value:
+    type: int
+    required: true
+    description: The value to set the attribute to.
