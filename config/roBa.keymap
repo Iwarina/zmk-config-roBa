@@ -148,7 +148,7 @@
         default_layer {
             bindings = <
 &kp Q      &kp W         &kp E         &kp R                   &kp T                                                       &kp Y        &kp U  &kp I      &kp O    &kp P
-&kp A      &kp S         &kp D         &kp F                   &kp G        &bootloader                 &lt 7 X            &kp H        &kp J  &kp K      &kp L    &kp SEMICOLON
+&kp A      &kp S         &kp D         &kp F                   &kp G        &bootloader                 &lt 7 TAB          &kp H        &kp J  &kp K      &kp L    &kp SEMICOLON
 &kp Z      &kp X         &kp C         &kp V                   &kp B        &kp LEFT_BRACKET            &kp RIGHT_BRACKET  &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
 &kp LCTRL  &kp LEFT_ALT  &kp LEFT_WIN  &lt_to_layer_0 1 LANG1  &lt 6 SPACE  &lt_to_layer_0 3 LANG2      &kp BACKSPACE      &lt 2 ENTER                             &kp DEL
             >;
@@ -187,10 +187,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                         &trans       &trans    &mo 5      &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &kp LC(V)  &kp LS(TAB)  &mkp MB1  &mkp MB3   &mkp MB2  &kp LC(TAB)
-&trans  &trans  &trans  &trans  &trans  &trans      &kp LC(C)  &trans       &mkp MB4  &kp LC(W)  &mkp MB5  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans     &trans                                      &trans
+&trans  &trans  &trans  &trans  &trans                         &trans       &kp LC(PG_UP)  &mkp MB3   &kp LC(PAGE_DOWN)  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &kp LC(V)  &kp LS(TAB)  &mkp MB1       &mo 5      &mkp MB2           &kp LC(TAB)
+&trans  &trans  &trans  &trans  &trans  &trans      &kp LC(C)  &trans       &mkp MB4       &kp LC(T)  &mkp MB5           &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans     &trans                                                    &trans
             >;
         };
 
