@@ -189,7 +189,7 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans                         &trans       &kp LC(PG_UP)  &mkp MB3   &kp LC(PAGE_DOWN)  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &kp LC(V)  &kp LS(TAB)  &mkp MB1       &mo 5      &mkp MB2           &kp LC(TAB)
-&trans  &trans  &trans  &trans  &trans  &trans      &kp LC(C)  &trans       &mkp MB4       &kp LC(T)  &mkp MB5           &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &kp LC(C)  &trans       &trans         &kp LC(T)  &trans             &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans     &trans                                                    &trans
             >;
         };
