@@ -147,10 +147,6 @@
 
             tap-ms = <20>;
         };
-
-        // 設定したいレイヤー
-
-        sensor-bindings = <&scroll_up_down>;
     };
 
     keymap {
