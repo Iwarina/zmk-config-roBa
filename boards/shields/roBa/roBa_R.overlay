@@ -77,5 +77,8 @@
         zephyr,axis-x = <INPUT_REL_Y>;
         zephyr,axis-y = <INPUT_REL_X>;
         invert-x;
+        res-cpi = <1000>;
+        smart-mode;
+        force-awake;
     };
 };
