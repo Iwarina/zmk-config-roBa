@@ -106,13 +106,23 @@
         };
 
         Shift+tab2 {
-            bindings = <&kp TAB>;
+            bindings = <&kp LS(TAB)>;
             key-positions = <3 2 1>;
         };
 
         tilda {
             bindings = <&kp LS(GRAVE)>;
             key-positions = <33 32 38>;
+        };
+
+        CtrlH {
+            bindings = <&kp LC(H)>;
+            key-positions = <19 20>;
+        };
+
+        CtrlGui {
+            bindings = <&kp LC(LGUI)>;
+            key-positions = <31 32>;
         };
     };
 
@@ -154,10 +164,10 @@
 
         default_layer {
             bindings = <
-&kp Q      &kp W         &kp E         &kp R                   &kp T                                                       &kp Y        &kp U  &kp I      &kp O    &kp P
+&lt 7 Q     &kp W         &kp E         &kp R                   &kp T                                                       &kp Y        &kp U  &kp I      &kp O    &kp P
 &kp A      &kp S         &kp D         &kp F                   &kp G        &bootloader                 &lt 7 TAB          &kp H        &kp J  &kp K      &kp L    &kp SEMICOLON
-&kp Z      &kp X         &kp C         &kp V                   &kp B        &kp LEFT_BRACKET            &kp RIGHT_BRACKET  &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL  &kp LEFT_ALT  &kp LEFT_WIN  &lt_to_layer_0 1 LANG1  &lt 6 SPACE  &lt_to_layer_0 3 LANG2      &kp BACKSPACE      &lt 2 ENTER                             &kp DEL
+&kp Z      &kp X         &kp C         &kp V                   &kp B        &lt 2 LEFT_BRACKET           &lt 5 RIGHT_BRACKET &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LCTRL  &kp LEFT_ALT  &kp LEFT_WIN  &lt_to_layer_0 1 LANG1  &lt 4 SPACE  &lt_to_layer_0 3 LANG2      &kp BACKSPACE      &lt 2 ENTER                             &kp DEL
             >;
 
             sensor-bindings = <&scroll_up_down>;
@@ -192,30 +202,30 @@
             >;
         };
 
-        MOUSE {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans                         &trans     &none     &mkp MB3  &none     &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &kp LC(V)  &none      &mkp MB1  &mo 5     &mkp MB2  &none
-&trans  &trans  &trans  &trans  &trans  &trans      &kp LC(C)  &kp LC(X)  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans     &trans                                   &trans
-            >;
-        };
-
-        SCROLL {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
-            >;
-        };
-
         SHIFT {
             bindings = <
 &kp LS(Q)      &kp LS(W)     &kp LS(E)     &kp LS(R)  &kp LS(T)                                                   &kp LS(Y)        &kp LS(U)  &kp LS(I)      &kp LS(O)    &kp LS(P)
 &kp LS(A)      &kp LS(S)     &kp LS(D)     &kp LS(F)  &kp LS(G)  &trans                    &kp LS(TAB)            &kp LS(H)        &kp LS(J)  &kp LS(K)      &kp LS(L)    &kp LS(SEMI)
 &kp LS(Z)      &kp LS(X)     &kp LS(C)     &kp LS(V)  &kp LS(B)  &kp LS(LEFT_BRACKET)      &kp LS(RIGHT_BRACKET)  &kp LS(N)        &kp LS(M)  &kp LS(COMMA)  &kp LS(DOT)  &kp LS(FSLH)
 &kp LS(LCTRL)  &kp LS(LALT)  &kp LS(LGUI)  &trans     &trans     &trans                    &kp LS(SPACE)          &lt 2 LS(ENTER)                                         &kp LS(DELETE)
+            >;
+        };
+
+        SHORTCUT {
+            bindings = <
+&kp LC(LA(Q))  &kp LC(LA(W))  &kp LC(LA(E))  &none      &kp ESCAPE                     &none   &none  &none  &none  &none
+&kp LEFT_ALT   &kp LCTRL      &none          &none      &kp LEFT_WIN  &trans  &trans    &none   &none  &none  &none  &none
+&kp LC(LA(Z))  &none          &kp LC(LGUI)   &kp LA(V)  &none         &trans  &trans    &none   &none  &none  &none  &none
+&trans         &trans         &trans         &trans     &trans        &trans  &trans    &trans                       &trans
+            >;
+        };
+
+        MOUSE {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                         &trans     &none     &mkp MB3  &none     &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &kp LC(V)  &none      &mkp MB1  &mo 5     &mkp MB2  &none
+&trans  &trans  &trans  &trans  &trans  &trans      &kp LC(C)  &kp LC(X)  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans     &trans                                   &trans
             >;
         };
 
