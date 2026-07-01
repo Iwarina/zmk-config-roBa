@@ -123,6 +123,11 @@
             bindings = <&kp LC(LGUI)>;
             key-positions = <31 32>;
         };
+
+        GameMode {
+            bindings = <&tog 9>;
+            key-positions = <34 35 36>;
+        };
     };
 
     macros {
@@ -243,6 +248,15 @@
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+            >;
+        };
+
+        GAME {
+            bindings = <
+&kp Q      &kp W         &kp E         &kp R       &kp T                                      &kp Y          &kp U       &kp I      &kp O      &kp P
+&kp A      &kp S         &kp D         &kp F       &kp G        &bootloader      &kp TAB       &kp H          &kp J       &kp K      &kp L      &kp SEMICOLON
+&kp Z      &kp X         &kp C         &kp V       &kp B        &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp N       &kp M       &kp COMMA  &kp DOT    &kp SLASH
+&kp LCTRL  &kp LEFT_ALT  &kp LEFT_WIN  &kp LANG1   &kp SPACE    &kp LANG2        &kp BACKSPACE &kp ENTER                            &kp DEL
             >;
         };
     };
