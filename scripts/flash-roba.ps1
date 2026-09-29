@@ -8,6 +8,8 @@ param(
 
     [string]$LeftDrive,
     [string]$RightDrive,
+    [ValidateSet('ResetLeft', 'ResetRight', 'FlashLeft', 'FlashRight')]
+    [string]$Stage,
     [switch]$ResetSettings,
     [switch]$Yes,
     [switch]$ValidateOnly,
@@ -83,13 +85,34 @@ function Assert-Bootloader {
     }
 }
 
+function Get-SingleBootloaderRoot {
+    $roots = @(
+        foreach ($drive in [System.IO.DriveInfo]::GetDrives()) {
+            try {
+                if ($drive.DriveType -eq [System.IO.DriveType]::Removable -and
+                    $drive.IsReady -and $drive.VolumeLabel -eq 'XIAO-SENSE') {
+                    $drive.RootDirectory.FullName
+                }
+            }
+            catch [System.IO.IOException] {
+                # A removable drive can disappear while it is being enumerated.
+            }
+        }
+    )
+    if ($roots.Count -ne 1) {
+        throw "Expected exactly one XIAO-SENSE bootloader drive; found $($roots.Count). Double-tap reset on only the named half."
+    }
+    Assert-Bootloader -Root $roots[0] -Side 'detected'
+    return $roots[0]
+}
+
 function Wait-ForUnmount {
     param([string]$Root)
 
-    $infoPath = Join-Path $Root 'INFO_UF2.TXT'
+    $infoPath = [System.IO.Path]::Combine($Root, 'INFO_UF2.TXT')
     $deadline = [DateTime]::UtcNow.AddSeconds($UnmountTimeoutSeconds)
     while ([DateTime]::UtcNow -lt $deadline) {
-        if (-not (Test-Path -LiteralPath $infoPath)) {
+        if (-not (Test-Path -LiteralPath $infoPath -ErrorAction SilentlyContinue)) {
             return
         }
         Start-Sleep -Milliseconds 250
@@ -118,6 +141,35 @@ Write-Host "Left:     $($leftImage.Name)"
 Write-Host "Right:    $($rightImage.Name)"
 if ($ValidateOnly) {
     Write-Host 'UF2 preflight passed. No device was written.'
+    return
+}
+
+if ($Stage) {
+    if ($LeftDrive -or $RightDrive) {
+        throw 'Do not specify drive letters with -Stage; the single bootloader drive is detected automatically.'
+    }
+    $isReset = $Stage -like 'Reset*'
+    if ($isReset -and -not $ResetSettings) {
+        throw 'Settings reset requires both -Stage ResetLeft/ResetRight and -ResetSettings.'
+    }
+    if (-not $isReset -and $ResetSettings) {
+        throw '-ResetSettings is valid only for a reset stage.'
+    }
+    $side = if ($Stage -like '*Left') { 'left' } else { 'right' }
+    $image = if ($isReset) { $resetImage } elseif ($side -eq 'left') { $leftImage } else { $rightImage }
+    $root = Get-SingleBootloaderRoot
+    Write-Host "Stage: $Stage; detected bootloader: $root"
+    if ($isReset) {
+        Write-Warning 'Settings reset erases Bluetooth bonds and saved ZMK Studio settings on this half.'
+    }
+    if (-not $Yes) {
+        $confirmation = Read-Host "Confirm the $side half is the ONLY half in bootloader mode. Type FLASH"
+        if ($confirmation -cne 'FLASH') {
+            throw 'Cancelled before writing the device.'
+        }
+    }
+    Write-Uf2 -Image $image -Root $root -Side "$side $(if ($isReset) { 'settings reset' } else { 'firmware' })"
+    Write-Host "Stage $Stage completed."
     return
 }
 

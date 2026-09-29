@@ -20,19 +20,28 @@ the `Trackball Sensitivity` behavior to W/E/S/D in Studio with parameters
 
 ## Flash both halves
 
-Connect both halves by USB and double-tap reset on each to expose two
-`XIAO-SENSE` bootloader drives. Identify which drive letter belongs to the left
-and right half before running the script; both drives have the same label.
-For example, if the left half is `P:` and the right half is `O:`:
+The bootloader does not identify which half is connected. Put **only the named
+half** into bootloader mode (connect by USB and double-tap reset), then run the
+corresponding command. The script detects the single `XIAO-SENSE` drive and
+rejects zero or multiple matching drives. No drive letters are needed:
 
 ```powershell
-.\scripts\flash-roba.ps1 -Commit 5f1b3ec -LeftDrive P -RightDrive O
+.\scripts\flash-roba.ps1 -Commit 5f1b3ec -Stage FlashLeft
+.\scripts\flash-roba.ps1 -Commit 5f1b3ec -Stage FlashRight
 ```
 
-Add `-ResetSettings` only when the halves need their stored settings cleared.
-The script flashes `settings_reset` to both halves first, then asks you to
-double-tap reset on both halves again before flashing their normal images.
-This erases Bluetooth bonds and the saved ZMK Studio keymap, so export anything
-you need to keep first. Use `-ValidateOnly` to check the UF2 files without
-touching the keyboard. `-Yes` skips the initial `FLASH` confirmation, but not
-the physical bootloader step after a settings reset.
+To clear stored settings on both halves, first run these two stages, entering
+bootloader mode on the named half before each command. Then re-enter the
+bootloader on each half and run the two normal firmware commands above:
+
+```powershell
+.\scripts\flash-roba.ps1 -Commit 5f1b3ec -Stage ResetLeft -ResetSettings
+.\scripts\flash-roba.ps1 -Commit 5f1b3ec -Stage ResetRight -ResetSettings
+```
+
+Settings reset erases Bluetooth bonds and the saved ZMK Studio keymap, so
+export anything you need first. Re-pair Bluetooth after both normal images
+are installed. Use `-ValidateOnly` to check UF2 files without touching the
+keyboard. `-Yes` skips the `FLASH` prompt when you have already confirmed the
+physical half. The old `-LeftDrive` and `-RightDrive` workflow remains
+available when both bootloader drives are mounted at once.
