@@ -148,7 +148,6 @@
         sensitivity: sensitivity {
             compatible = "roba,behavior-sensitivity";
             #binding-cells = <2>;
-            label = "SENSITIVITY";
             display-name = "Trackball Sensitivity";
         };
 
