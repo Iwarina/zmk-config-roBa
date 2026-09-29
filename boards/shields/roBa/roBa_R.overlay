@@ -36,7 +36,7 @@
 
         scroll {
             layers = <8>;
-            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_scaler 1 8>;
+            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_scaler 1 16>;
         };
 
     };
@@ -84,7 +84,7 @@
         // COROPIT rotates the sensor 180 degrees relative to the original unit.
         // Keep the axis swap and reverse both directions by switching inversion.
         invert-y;
-        res-cpi = <1000>;
+        res-cpi = <800>;
         smart-mode;
         force-awake;
     };
