@@ -1,0 +1,5 @@
+description: Adjust roBa trackball or scroll sensitivity
+
+compatible: "roba,behavior-sensitivity"
+
+include: two_param.yaml

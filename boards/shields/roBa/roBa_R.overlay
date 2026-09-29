@@ -18,6 +18,10 @@
 
 &zip_temp_layer {
     excluded-positions = <
+        1 // W: pointer faster
+        2 // E: scroll faster
+        11 // S: pointer slower
+        12 // D: scroll slower
         18 // J
         19 // K
         21 // ;
@@ -27,16 +31,31 @@
 };
 
 / {
+    pointer_sensitivity: pointer_sensitivity {
+        compatible = "roba,input-processor-sensitivity";
+        mode = "pointer";
+        #input-processor-cells = <0>;
+        track-remainders;
+    };
+
+    scroll_sensitivity: scroll_sensitivity {
+        compatible = "roba,input-processor-sensitivity";
+        mode = "scroll";
+        #input-processor-cells = <0>;
+        track-remainders;
+    };
+
     trackball_listener {
         status = "okay";
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
-        input-processors = <&zip_temp_layer 6 800>;
+        input-processors = <&zip_temp_layer 6 800>, <&pointer_sensitivity>;
 
         scroll {
             layers = <8>;
-            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_scaler 1 16>;
+            input-processors = <&scroll_sensitivity>, <&zip_xy_to_scroll_mapper>,
+                               <&zip_scroll_scaler 1 16>;
         };
 
     };

@@ -1,0 +1,17 @@
+description: Scale roBa pointer or scroll movement using the current sensitivity
+
+compatible: "roba,input-processor-sensitivity"
+
+properties:
+  mode:
+    type: string
+    required: true
+    enum:
+      - pointer
+      - scroll
+  "#input-processor-cells":
+    type: int
+    required: true
+    const: 0
+  track-remainders:
+    type: boolean

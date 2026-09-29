@@ -1,0 +1,8 @@
+if(CONFIG_ZMK_POINTING)
+  zephyr_library()
+  zephyr_library_sources(
+    src/sensitivity.c
+    src/behavior_sensitivity.c
+    src/input_processor_sensitivity.c
+  )
+endif()

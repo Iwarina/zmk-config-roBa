@@ -145,6 +145,13 @@
     };
 
     behaviors {
+        sensitivity: sensitivity {
+            compatible = "roba,behavior-sensitivity";
+            #binding-cells = <2>;
+            label = "SENSITIVITY";
+            display-name = "Trackball Sensitivity";
+        };
+
         lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
@@ -231,8 +238,8 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                         &trans     &none     &mkp MB3  &none     &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &kp LC(V)  &none      &mkp MB1  &mo 8     &mkp MB2  &none
+&trans  &sensitivity 0 1  &sensitivity 1 1  &trans  &trans                         &trans     &none     &mkp MB3  &none     &trans
+&trans  &sensitivity 0 0  &sensitivity 1 0  &trans  &trans  &trans      &kp LC(V)  &none      &mkp MB1  &mo 8     &mkp MB2  &none
 &trans  &trans  &trans  &trans  &trans  &trans      &kp LC(C)  &kp LC(X)  &trans    &trans    &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans     &trans                                   &trans
             >;
