@@ -17,3 +17,22 @@ there, flashing firmware alone may not replace its four saved bindings. Assign
 the `Trackball Sensitivity` behavior to W/E/S/D in Studio with parameters
 `Pointer, Faster` / `Scroll, Faster` / `Pointer, Slower` /
 `Scroll, Slower`, respectively. This preserves the rest of the saved keymap.
+
+## Flash both halves
+
+Connect both halves by USB and double-tap reset on each to expose two
+`XIAO-SENSE` bootloader drives. Identify which drive letter belongs to the left
+and right half before running the script; both drives have the same label.
+For example, if the left half is `P:` and the right half is `O:`:
+
+```powershell
+.\scripts\flash-roba.ps1 -Commit 5f1b3ec -LeftDrive P -RightDrive O
+```
+
+Add `-ResetSettings` only when the halves need their stored settings cleared.
+The script flashes `settings_reset` to both halves first, then asks you to
+double-tap reset on both halves again before flashing their normal images.
+This erases Bluetooth bonds and the saved ZMK Studio keymap, so export anything
+you need to keep first. Use `-ValidateOnly` to check the UF2 files without
+touching the keyboard. `-Yes` skips the initial `FLASH` confirmation, but not
+the physical bootloader step after a settings reset.
