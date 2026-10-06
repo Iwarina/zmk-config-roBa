@@ -2,6 +2,34 @@
 
 <img src="keymap-drawer/roBa.svg" >
 
+## Number zero hold-tap
+
+The NUMARROW layer's leftmost zero/Shift key uses `Number Zero Mod-Tap`:
+tap for 0, hold for Left Shift, with a 250 ms tapping term. Its balanced
+flavor and disabled quick-tap match the other Mod-Tap keys, whose tapping
+terms are unchanged. With balanced flavor, tapping another key while zero
+is held can resolve Shift before the timeout.
+
+If Studio has saved this key as the original Mod-Tap, assign
+`Number Zero Mod-Tap` to that key with hold `LEFT_SHIFT` and tap `N0`, then
+save. Flashing does not replace a saved Studio keymap. A settings reset is
+not required and would erase Bluetooth bonds and other saved bindings.
+
+## Battery power saving
+
+Both halves enter deep sleep after 15 minutes of inactivity on battery
+power. The key matrix is configured as a wakeup source: press a key on
+each sleeping half to wake it, allowing a few seconds for Bluetooth to
+reconnect before typing. The trackball and encoder are not configured as
+deep-sleep wakeup sources. Deep sleep is skipped while USB power is present.
+Save Studio changes before leaving the keyboard idle.
+
+The right trackball sensor uses its normal automatic power-saving mode
+instead of `force-awake`. Its 800 CPI and smart mode remain unchanged.
+Bluetooth's +8 dBm transmit power and disabled 2 Mbps PHY are retained.
+Runtime sensitivity adjustments reset to their defaults after waking from
+deep sleep, just as they do after rebooting.
+
 ## Trackball sensitivity
 
 On the MOUSE layer, the left-hand W/S pair adjusts pointer speed and the E/D

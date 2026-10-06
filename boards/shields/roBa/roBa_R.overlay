@@ -105,6 +105,5 @@
         invert-y;
         res-cpi = <800>;
         smart-mode;
-        force-awake;
     };
 };
